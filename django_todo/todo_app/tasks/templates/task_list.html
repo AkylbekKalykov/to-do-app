@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            <a href="{%url 'mark_as_done' task.id%}">{%if task.completed%}[✓]{%else%}[ ]{%endif%}</a>
+            {{ task.title }}
+            {% if task.completed %}
+                (Completed)
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_task' %}">Add Task</a>
+</body>
+</html>
